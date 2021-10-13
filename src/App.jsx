@@ -1,9 +1,10 @@
 import './App.css';
 import React, { Component } from 'react';
-import Searchbar from './components/Search/Search'
+import Searchbar from './components/Search/Search';
 import PropTypes from 'prop-types';
 import pixabyApi from './services/pixaby.api';
 import Container from './components/Container/Container';
+import ImageGallery from './components/ImageGallery/ImageGallery';
 
 class App extends Component {
   state = {
@@ -26,17 +27,20 @@ class App extends Component {
     this.state({ q: query, page: 1, gallery: [], error: null });
   };
 
-  render(){
-    const {error} = this.state;
-    return(
-      <Container>
-        {error && <h1>Try again!</h1> }
-        <Searchbar onSubmit={this.onChangeQuery}/>
-
-      </Container>
-
-    )
+  imgClick = largeImgUrl => {
+    this.setState({ largeImage: largeImgUrl });
   };
+
+  render() {
+    const { error, gallery } = this.state;
+    return (
+      <Container>
+        {error && <h1>Try again!</h1>}
+        <Searchbar onSubmit={this.onChangeQuery} />
+        <ImageGallery showGallery={gallery} onImgClick={this.imgClick} />
+      </Container>
+    );
+  }
 }
 
 export default App;
