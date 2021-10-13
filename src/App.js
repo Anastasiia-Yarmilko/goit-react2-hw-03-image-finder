@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Searchbar from './components/Search/Search'
 import PropTypes from 'prop-types';
 import pixabyApi from './services/pixaby.api';
+import Container from './components/Container/Container';
 
 class App extends Component {
   state = {
@@ -26,10 +27,13 @@ class App extends Component {
   };
 
   render(){
+    const {error} = this.state;
     return(
+      <Container>
+        {error && <h1>Try again!</h1> }
+        <Searchbar onSubmit={this.onChangeQuery}/>
 
-    {error && <h1>Try again!</h1> }
-    <Searchbar onSubmit={this.onChangeQuery}/>
+      </Container>
 
     )
   };
