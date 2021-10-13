@@ -27,6 +27,29 @@ class App extends Component {
     this.state({ q: query, page: 1, gallery: [], error: null });
   };
 
+  fetchGallery = () => {
+    const { q, page } = this.state;
+    const options = { q, page };
+
+    this.setState({ isLoading: true });
+    pixabyApi
+      .fetchPixabyImages(options)
+      .then(({ data }) => {
+        this.setState(prevState => ({
+          gallery: [...prevState.gallery, ...data.hits],
+          page: prevState.page + 1,
+        }));
+      })
+      .catch(error => this.setState({ error }))
+      .finally(() => {
+        this.setState({ isLoading: false });
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: 'smooth',
+        });
+      });
+  };
+
   imgClick = largeImgUrl => {
     this.setState({ largeImage: largeImgUrl });
   };
