@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import pixabyApi from './services/pixaby.api';
 import Container from './components/Container/Container';
 import ImageGallery from './components/ImageGallery/ImageGallery';
+import Loader from './components/Loader/Loader';
 
 class App extends Component {
   state = {
@@ -55,12 +56,13 @@ class App extends Component {
   };
 
   render() {
-    const { error, gallery } = this.state;
+    const { error, gallery, isLoading } = this.state;
     return (
       <Container>
         {error && <h1>Try again!</h1>}
         <Searchbar onSubmit={this.onChangeQuery} />
         <ImageGallery showGallery={gallery} onImgClick={this.imgClick} />
+        {isLoading && <Loader />}
       </Container>
     );
   }
