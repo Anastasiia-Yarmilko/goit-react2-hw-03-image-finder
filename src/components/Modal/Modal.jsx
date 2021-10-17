@@ -30,7 +30,7 @@ class Modal extends Component {
 
   render() {
     return (
-      <div className={style.Overlay} onClick={this.handelCloseModal}>
+      <div className={style.Overlay} onClick={this.handleCloseModal}>
         <div className={style.Modal}>{this.props.children}</div>
       </div>
     );
