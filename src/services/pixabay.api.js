@@ -11,8 +11,9 @@ axios.defaults.params = {
   per_page: 12,
 };
 
-const fetchPixabyImages = async ({ q, page }) => {
+const fetchPixabayImages = async ({ q, page }) => {
   return await axios.get('', { params: { q, page } });
 };
 
-export default fetchPixabyImages;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default { fetchPixabayImages };

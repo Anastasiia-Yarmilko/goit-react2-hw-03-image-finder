@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 const ImageGallery = ({ showGallery, onImgClick }) => {
   return (
     <ul className="Gallery">
-      {showGallery.map(({ id, webFormatUrl, largeImageUrl }) => {
-        const handleItemClick = () => onImgClick(largeImageUrl);
+      {showGallery.map(({ id, webformatURL, largeImageURL }) => {
+        const handleItemClick = () => onImgClick(largeImageURL);
         return (
           <ImageGalleryItem
             key={id}
-            webformatURL={webFormatUrl}
+            webformatURL={webformatURL}
             onImgClick={handleItemClick}
           />
         );
