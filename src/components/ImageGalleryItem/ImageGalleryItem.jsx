@@ -1,11 +1,11 @@
 import style from './ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
 
-const ImageGalleryItem = ({ onImgClick, webFormatUrl }) => {
+const ImageGalleryItem = ({ onImgClick, webformatURL }) => {
   return (
     <li className={style.GalleryItem}>
       <img
-        src={webFormatUrl}
+        src={webformatURL}
         alt="img"
         className={style.ImageGalleryItem}
         onClick={onImgClick}

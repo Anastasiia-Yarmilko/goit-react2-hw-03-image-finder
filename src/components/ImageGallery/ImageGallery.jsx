@@ -1,9 +1,10 @@
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
+import styles from './ImageGallery.module.css';
 
 const ImageGallery = ({ showGallery, onImgClick }) => {
   return (
-    <ul className="Gallery">
+    <ul className={styles.Gallery}>
       {showGallery.map(({ id, webformatURL, largeImageURL }) => {
         const handleItemClick = () => onImgClick(largeImageURL);
         return (
